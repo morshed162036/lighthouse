@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Herosection;
 use App\Models\Counter;
-use App\Models\HomeAboutUS;
+use App\Models\HomeAboutUs;
 use App\Models\HomeAgeSpecific;
+use App\Models\SchoolTiming;
+use App\Models\Setting;
 class HeroSectionController extends Controller
 {
     public function heroSection (Request $request)
@@ -51,7 +53,7 @@ class HeroSectionController extends Controller
                     //Get Image Extension
                     $extension = $image_temp->getClientOriginalExtension();
                     //Generate New Image Name
-                    $imageName = time().'2'.$extension;
+                    $imageName = time().'2.'.$extension;
                     $imagePath = 'images/herosection';
                     $image_temp->move(public_path($imagePath),$imageName);
                     $herosection->image_2 = $imageName;
@@ -168,5 +170,92 @@ class HeroSectionController extends Controller
             return redirect(route('homeAgeSpecific'))->with('success','Update Complete!!');
         }
         return view('backend.homepage.agespecific',compact('ages','age'));
+    }
+
+    public function schoolTiming(Request $request)
+    {
+        $timing = SchoolTiming::get()->first();
+        if($request->isMethod('post'))
+        {
+            // dd($request->all());
+            $timing->content = $request->content;
+            $timing->update();
+            return redirect(route('schoolTiming'))->with('success','Update Complete!!');
+        }
+        return view('backend.homepage.schooltiming',compact('timing'));
+    }
+
+    public function setting(Request $request)
+    {
+        $setting = Setting::get()->first();
+        if($request->isMethod('post'))
+        {
+            // dd($request->all());
+            $setting->name = $request->name;
+            $setting->address = $request->address;
+            $setting->map = $request->map;
+            $setting->email = $request->email;
+            $setting->tnt = $request->tnt;
+            $setting->phone = $request->phone;
+            $setting->facebook = $request->facebook;
+            $setting->youtube = $request->youtube;
+            $setting->instagram = $request->instagram;
+            $setting->linkedin = $request->linkedin;
+
+            if($request->hasFile('logo')){
+                $exists = 'images/setting/'.$setting->logo;
+                if(File::exists($exists))
+                {
+                    File::delete($exists);
+                }
+                $image_temp = $request->file('logo');
+                if($image_temp->isValid()){
+                    //Get Image Extension
+                    $extension = $image_temp->getClientOriginalExtension();
+                    //Generate New Image Name
+                    $imageName = time().'_logo.'.$extension;
+                    $imagePath = 'images/setting';
+                    $image_temp->move(public_path($imagePath),$imageName);
+                    $setting->logo = $imageName;
+                }
+            }
+            if($request->hasFile('favicon')){
+                $exists = 'images/setting/'.$setting->favicon;
+                if(File::exists($exists))
+                {
+                    File::delete($exists);
+                }
+                $image_temp = $request->file('favicon');
+                if($image_temp->isValid()){
+                    //Get Image Extension
+                    $extension = $image_temp->getClientOriginalExtension();
+                    //Generate New Image Name
+                    $imageName = time().'_favicon.'.$extension;
+                    $imagePath = 'images/setting';
+                    $image_temp->move(public_path($imagePath),$imageName);
+                    $setting->favicon = $imageName;
+                }
+            }
+            if($request->hasFile('banner')){
+                $exists = 'images/setting/'.$setting->banner;
+                if(File::exists($exists))
+                {
+                    File::delete($exists);
+                }
+                $image_temp = $request->file('banner');
+                if($image_temp->isValid()){
+                    //Get Image Extension
+                    $extension = $image_temp->getClientOriginalExtension();
+                    //Generate New Image Name
+                    $imageName = time().'_banner.'.$extension;
+                    $imagePath = 'images/setting';
+                    $image_temp->move(public_path($imagePath),$imageName);
+                    $setting->banner = $imageName;
+                }
+            }
+            $setting->update();
+            return redirect(route('setting'))->with('success','Update Complete!!');
+        }
+        return view('backend.setting',compact('setting'));
     }
 }

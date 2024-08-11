@@ -24,6 +24,11 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_template/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+    <style>
+        .ck-editor__editable_inline{
+            height: 100px;
+        }
+    </style>
 @endsection
 
 @section('content')

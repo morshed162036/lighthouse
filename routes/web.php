@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\HeroSectionController;
+use App\Http\Controllers\backend\AchievementController;
+use App\Http\Controllers\backend\KeyInformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,7 @@ Route::get('/curriculam', [FrontendController::class, 'curriculam'])->name('curr
 Route::get('/calender', [FrontendController::class, 'calender'])->name('calender');
 Route::get('/campus', [FrontendController::class, 'campus'])->name('campus');
 Route::get('/event', [FrontendController::class, 'event'])->name('event');
+Route::get('/details/{id}', [FrontendController::class, 'eventDetails'])->name('event.details');
 Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/addmission_procedure', [FrontendController::class, 'addmission_procedure'])->name('addmission_procedure');
 Route::get('/school-fees', [FrontendController::class, 'fees'])->name('fees');
@@ -58,11 +61,22 @@ Route::prefix('/admin')->group(function(){
         Route::get('logout',[AdminController::class,'logout'])->name('admin.logout');
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::match(['get', 'post'], 'herosection',[HeroSectionController::class,'heroSection'])->name('heroSection');
+        Route::match(['get', 'post'], 'school-timing',[HeroSectionController::class,'schoolTiming'])->name('schoolTiming');
         Route::match(['get', 'post'], 'counter',[HeroSectionController::class,'counter'])->name('counter');
         Route::match(['get', 'post'], 'about-us',[HeroSectionController::class,'homeAboutUs'])->name('homeAboutUs');
         Route::match(['get', 'post'], 'age-specific/{id?}',[HeroSectionController::class,'homeAgeSpecific'])->name('homeAgeSpecific');
+        Route::match(['get', 'post'], 'achievement/{id?}',[AchievementController::class,'achievement'])->name('achievement');
+        Route::match(['get', 'post'], 'branch/{id?}',[AchievementController::class,'branch'])->name('branch');
+        Route::match(['get', 'post'], 'facilities',[AchievementController::class,'facility'])->name('facility');
+        Route::match(['get', 'post'], 'polices',[AchievementController::class,'policy'])->name('policy');
+        Route::post('policy-upload', [KeyInformationController::class,'policyUpload'])->name('policy.upload');
+        Route::match(['get', 'post'], 'camps/{id?}',[KeyInformationController::class,'camps'])->name('camps');
+        Route::post('camp-upload', [KeyInformationController::class,'campUpload'])->name('camp.upload');
+        Route::match(['get', 'post'], 'event-notice-news/{id?}',[KeyInformationController::class,'eventNoticeNews'])->name('eventNoticeNews');
+        Route::post('event-upload', [KeyInformationController::class,'eventUpload'])->name('event.upload');
+        Route::match(['get', 'post'], 'transport-cafeteria-book/{id?}',[KeyInformationController::class,'transportCafeteriaBook'])->name('transportCafeteriaBook');
+        Route::match(['get', 'post'], 'setting',[HeroSectionController::class,'setting'])->name('setting');
 
-        
     });
 
 });

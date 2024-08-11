@@ -48,9 +48,9 @@ p {
     color: var(--black-color);
 }
 
-body {
-    /* position: relative; */
-}
+/* body {
+    position: relative;
+} */
 
 /* common css end */
 
@@ -85,7 +85,7 @@ body {
 }
 
 
-.top_heading_left {}
+/* .top_heading_left {} */
 
 .school_logo img {
     height: 100px;
@@ -737,7 +737,7 @@ button.btn-close {
 
 
 /* ==================================
-     Age specification start 
+     Age specification start
 =====================================*/
 
 .age_specification_top {
@@ -904,12 +904,12 @@ button.btn-close {
 }
 
 /*====================================
-  School Timing end 
+  School Timing end
   =====================================*/
 
 
 /*=====================================
-   news and media section start 
+   news and media section start
    ======================================*/
 .news_media {
     margin: 100px 0px;
@@ -982,11 +982,11 @@ button.btn-close {
 }
 
 /*=======================================
-        news and media section end 
+        news and media section end
   =========================================*/
 
 /*=======================================
-       footer seection start 
+       footer seection start
    ========================================*/
 
 .footer_section {
@@ -1143,11 +1143,11 @@ button.btn-close {
 ==================================== */
 
 /*========================
- about page css start 
+ about page css start
  =========================*/
 
 /*====================
-  mission&vission start 
+  mission&vission start
   ======================*/
 .mission_title {
     background-color: var(--blue-color);
@@ -1223,7 +1223,7 @@ button.btn-close {
 }
 
 /*====================
-  mission&vission end 
+  mission&vission end
   ======================*/
 
 /* =======================
@@ -1422,7 +1422,7 @@ ul#myTab {
 ================================ */
 
 /* ============================
-      Our Team start 
+      Our Team start
 ================================ */
 .main_teaching_team {
     display: flex;
@@ -1503,11 +1503,11 @@ ul#myTab {
 
 
 /* =======================
- about page css end 
+ about page css end
  ==========================*/
 
 /* =======================
- curriculam_page start 
+ curriculam_page start
  ===========================*/
 .curriculam_description_title p {
     font-size: 17px;
@@ -1559,7 +1559,7 @@ ul#myTab {
 }
 
 /* =======================
- curriculam_page end 
+ curriculam_page end
  ===========================*/
 
 /* ===========================
@@ -1601,7 +1601,7 @@ h5 {
 
 
 /*=========================
- recapcha start 
+ recapcha start
  =======================*/
 
 .captcha {
@@ -1831,7 +1831,7 @@ input[type="checkbox"]:checked+.checkmark>span:before {
 }
 
 /* =====================
-recapcha end 
+recapcha end
 =========================*/
 
 .tour_from_wrapper {
@@ -1958,7 +1958,7 @@ recapcha end
 
 
 /*==================================
-      Gallery Page start 
+      Gallery Page start
 ====================================*/
 
 .hero_section {
@@ -2058,7 +2058,7 @@ li.breadcrumb-item.active:hover {
 }
 
 /*==================================
-      Gallery Page start 
+      Gallery Page start
 ====================================*/
 
 /*==================================
@@ -2148,7 +2148,7 @@ li.breadcrumb-item.active:hover {
 ====================================*/
 
 /*============================
-   Apply page start 
+   Apply page start
 ==============================*/
 .download_form_lft {
     padding: 30px 0px;
@@ -2280,11 +2280,11 @@ li.breadcrumb-item.active:hover {
 }
 
 /*============================
-   Apply page end 
+   Apply page end
 ==============================*/
 
 /* ===========================
- Payment page start 
+ Payment page start
 =============================*/
 
 .payment_maincontent {
@@ -2352,7 +2352,7 @@ li.breadcrumb-item.active:hover {
 }
 
 /* ============================
-payment page end 
+payment page end
 =============================*/
 
 /* ============================
@@ -2413,7 +2413,7 @@ Online addmission page End
 ============================ */
 
 /* ===========================
-    Fees page start 
+    Fees page start
 =============================*/
 .fees_banner {
     background-position: center !important;
@@ -3011,3 +3011,24 @@ Online addmission page End
 }
 
 /* again admission css end */
+
+/* custom */
+.campus_details_body h3
+{
+    color: black;
+}
+
+#summer_camp .image img{
+    width: 100% !important;
+}
+#winter_camp .image img{
+    width: 100% !important;
+}
+#winter_camp .image img{
+    width: 100% !important;
+}
+
+#notice_body {
+    height: 11rem !important;
+    overflow: hidden !important;
+}

@@ -1,5 +1,11 @@
 @extends('frontend.layouts.main')
 @section('content')
+<section class="lighthouse_cmn_banner"
+        style="background-image: url({{asset('images/transportbook/'.$book->image)}}">
+        <div class="lighthouse_cmn_overlay">
+            <h2>{{ $book->title }}</h2>
+        </div>
+    </section>
 <!-- ligthhouse schhol cmn body start -->
 <section class="lighthouse_cmn_body">
     <div class="container">
@@ -16,7 +22,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="lighthouse_cmn_right">
-                    <ul>
+                    {{-- <ul>
                         <li>
                             <p>We use the latest textbooks prescribed by Cambridge for our students. Our Library
                                 also contains a collection of 37000+ books as well as international journals and
@@ -27,7 +33,8 @@
                                 will be able to use computer-based searching facilities to find what they are
                                 looking for! Grades 1-7 also have routine-based library classes every week.</p>
                         </li>
-                    </ul>
+                    </ul> --}}
+                    {!! $book->content !!}
                 </div>
             </div>
         </div>

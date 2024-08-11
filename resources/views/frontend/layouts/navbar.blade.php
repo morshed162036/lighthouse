@@ -4,8 +4,11 @@
             <div class="top_head_wrapper">
                 <div class="top_logo">
                     <div class="school_logo">
-                        <img src="{{asset('frontend')}}/assets/images/logo/Light.png" alt="SCHOOL-OF-LIFE.png"
+                        <a href="{{route('home.index')}}">
+                            <img src="{{asset('images/setting/'.$company->logo)}}"
                             class="img-fluid">
+                        </a>
+
                     </div>
                 </div>
                 <div class="top_head_button">
@@ -18,10 +21,10 @@
                 </div>
                 <div class="top_social_icon">
                     <div class="social_icon_list">
-                        <a href="www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="www.linkdin.com"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="www.youtube.com"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="{{ $company->facebook }}"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="{{ $company->instagram }}"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="{{ $company->linkedin }}"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="{{ $company->youtube }}"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>

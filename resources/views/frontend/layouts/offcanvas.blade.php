@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="clol-lg-12">
                     <div class="offcanvas_img">
-                        <img src="{{asset('frontend')}}/assets/images/logo/Light.png" alt="SCHOOL-OF-LIFE.png"
+                        <img src="{{asset('images/setting/'.$company->logo)}}" alt="SCHOOL-OF-LIFE.png"
                             class="img-fluid w-100">
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                             </div>
 
                             <li class="menu-item-has-children">
-                                <a href="{{route('login')}}">Login</a>
+                                <a href="{{route('admin.login')}}">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="contact_text">
                                         <strong>Contact number:</strong><br>
-                                        <a class="contact_text_content" href="tel:+88096567890">+88096567890</a>
+                                        <a class="contact_text_content" href="tel:{{ $company->tnt }}">{{ $company->tnt }}</a>
                                     </div>
                                 </div>
                             </li>
@@ -180,11 +180,11 @@
                                     </div>
                                     <div class="contact_text">
                                         <strong>Email Address:</strong><br>
-                                        <a class="contact_text_content" href="#">info.school.edu.bd</a>
+                                        <a class="contact_text_content" href="mailto:{{ $company->email }}">{{ $company->email }}</a>
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <div class="icon_number">
                                     <div class="contact_icon">
                                         <i class="fa-solid fa-clock"></i>
@@ -194,7 +194,7 @@
                                         <p>Sunday-Thursday 8:00Am-4:00 PmSaturday 9:00 Am-1:00 Pm</p>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li>
                                 <div class="icon_number">
                                     <div class="contact_icon">
@@ -202,10 +202,7 @@
                                     </div>
                                     <div class="contact_text">
                                         <strong>Address:</strong><br>
-                                        <p>Plot No: E-2 & E-3
-                                            Sunvalley Sharoni, Block: A
-                                            Sunvalley Abashan Swadesh Properties Ltd.
-                                            Satarkul, Badda Dhaka-1212</p>
+                                        <p>{{ $company->address }}</p>
                                     </div>
                                 </div>
                             </li>

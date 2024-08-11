@@ -1,10 +1,10 @@
 @extends('frontend.layouts.main')
-@section('content') 
+@section('content')
 <!-- Fees Banner section start  -->
 <section class="lighthouse_cmn_banner"
-        style="background-image: url({{asset('frontend')}}/assets/images/transport/cafetaria.jpg);">
+        style="background-image: url({{asset('images/transportbook/'.$cafeteria->image)}}">
         <div class="lighthouse_cmn_overlay">
-            <h2>Cafeteria</h2>
+            <h2>{{ $cafeteria->title }}</h2>
         </div>
     </section>
     <!-- Fees Banner section End -->
@@ -25,11 +25,12 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="lighthouse_cmn_right">
-                        <ul>
+                        {{-- <ul>
                             <li>
                                 <p>The School has a spacious cafeteria which provides nutritious and healthy snacks, lunch and juices prepared in strictly controlled and hygienic conditions. Our highly proficient team of professionals working in the cafeteria cater safe and delicious food to the students with their highest priority. We only use the best quality ingredients from reliable suppliers.</p>
                             </li>
-                        </ul>
+                        </ul> --}}
+                        {!! $cafeteria->content !!}
                     </div>
                 </div>
             </div>

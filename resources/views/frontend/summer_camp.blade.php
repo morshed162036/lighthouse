@@ -3,14 +3,14 @@
 <!-- summer camp header image start  -->
 <section class="summer_camp_header_section">
         <div class="summer_camp_top">
-            <img src="{{asset('frontend')}}/assets/images/summer-camp/summer-camp-2024.jpg.jpg" class="img-fluid w-100">
+            <img src="{{ asset('images/camps/'.$summer->image) }}" class="img-fluid w-100">
         </div>
     </section>
     <!-- summer camp header image end  -->
     <!-- summer camp body start -->
-    <section class="summer_camp_body">
-        <div class="container">
-            <div class="summer_camp_front_design">
+    <section class="summer_camp_body" id="summer_camp">
+        {{-- <div class="container"> --}}
+            {{-- <div class="summer_camp_front_design">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="summer_camp_image">
@@ -213,16 +213,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> --}}
+             {!! $summer->content !!}
+        {{-- </div> --}}
     </section>
     <!-- summer camp body end -->
 
     <!-- summer camp footer image start  -->
     <section class="summer_camp_footer_section">
-        <div class="summer_camp_bottom">
+        {{-- <div class="summer_camp_bottom">
             <img src="{{asset('frontend')}}/assets/images/summer-camp/summer-camp-updated.jpg.jpg" class="img-fluid w-100">
-        </div>
+        </div> --}}
         <div class="summer_camp_btn">
             <a href="#" class="ielts_btn">Registation Here</a>
         </div>

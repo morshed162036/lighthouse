@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
-        view()->composer(['client.layouts.menu','client.layouts.footer','client.product_details','client.layouts.header','backend.layout.header','backend.layout.menu-bar','backend.order.invoice'], function ($view) {
+        view()->composer(['frontend.*','frontend.layouts.*','frontend.layouts.menu','frontend.layouts.footer','frontend.index','frontend.layouts.header','backend.layout.header','backend.layout.menu-bar','backend.order.invoice'], function ($view) {
             $company = Setting::get()->first();
             $view->with(compact('company'));
         });
