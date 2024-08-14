@@ -24,7 +24,7 @@
                 </div>
             @endif
             <div class="button_rating">
-                <a class="cmn_btn_hov">{{ ($herosection->button_text)? $herosection->button_text : 'Enroll your kid' }}</a>
+                <div><a class="cmn_btn_hov">{{ ($herosection->button_text)? $herosection->button_text : 'Enroll your kid' }}</a></div>
                 @if ($herosection->rating)
                     <div class="banner_rating">
                         <i class="fa-solid fa-star"></i>
@@ -387,7 +387,7 @@
 
           </div>
           <div class="school_timing_btn text-center">
-            <a class="cmn_btn">Enroll your kid</a>
+            <a class="cmn_btn"><span class="cmn_btn_enroll">Enroll your kid</span></a>
           </div>
         </div>
       </div>
