@@ -24,7 +24,7 @@
                 </div>
             @endif
             <div class="button_rating">
-                <a class="cmn_btn_hov">{{ ($herosection->button_text)? $herosection->button_text : 'Enroll your kid' }}</a>
+                <div><a class="cmn_btn_hov">{{ ($herosection->button_text)? $herosection->button_text : 'Enroll your kid' }}</a></div>
                 @if ($herosection->rating)
                     <div class="banner_rating">
                         <i class="fa-solid fa-star"></i>
@@ -38,14 +38,16 @@
                     </div>
                 @endif
             </div>
-            <div class="banner_phone_number">
-              <div class="banner_icon">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div class="icon_number">
-                <p>(+880) 1894-940800</p>
-              </div>
-            </div>
+            @if (!empty($company->phone))
+                <div class="banner_phone_number">
+                <div class="banner_icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="icon_number">
+                    <p>{{ $company->phone }}</p>
+                </div>
+                </div>
+            @endif
           </div>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -291,7 +293,7 @@
           <div class="school_timing_table_wrapper">
             <div class="row">
               <div class="col-lg-12">
-                <div class="school_table_content">
+                {{-- <div class="school_table_content">
                   <div class="school_table_head">
                     <h2>For Early Years (Playgroup, Nursery, Kindergarten)</h2>
                   </div>
@@ -374,16 +376,18 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> --}}
+                {!! $timing->content !!}
               </div>
             </div>
-            <div class="school_timing_note">
+            {{-- <div class="school_timing_note">
               <p><span class="text-danger">*</span>lighthouse international school holds the right to chnage the school timing as per
                 requirement.</p>
-            </div>
+            </div> --}}
+
           </div>
           <div class="school_timing_btn text-center">
-            <a class="cmn_btn">Enroll your kid</a>
+            <a class="cmn_btn"><span class="cmn_btn_enroll">Enroll your kid</span></a>
           </div>
         </div>
       </div>
@@ -409,48 +413,58 @@
               <h2>Latest updates</h2>
             </div>
           </div>
-          <div class="content_list">
-            <ul>
-              <li>
-                <a href="#">
-                  <p>STS Group to introduce lighthouse international School Satarkul in Bangladesh on 21 November 2022</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p>STS Group to introduce lighthouse international School Satarkul in Bangladesh on 21 November 2022</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p>STS Group to introduce lighthouse international School Satarkul in Bangladesh on 21 November 2022</p>
-                </a>
-              </li>
-            </ul>
-          </div>
+          @if ($latest_updates)
+            <div class="content_list">
+                <ul>
+                    @foreach ($latest_updates as $latest_update)
+                        <li>
+                            <a href="@if ($latest_update->url)
+                                            {{ $latest_update->url }}
+                                    @else
+                                        {{ route('event.details',$latest_update->id) }}
+                                    @endif">
+                            <p>{{ $latest_update->title }}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                {{-- <li>
+                    <a href="#">
+                    <p>STS Group to introduce lighthouse international School Satarkul in Bangladesh on 21 November 2022</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <p>STS Group to introduce lighthouse international School Satarkul in Bangladesh on 21 November 2022</p>
+                    </a>
+                </li> --}}
+                </ul>
+            </div>
+          @endif
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
           <div class="media">
             <div class="counter_heading">
               <h2>News & Media</h2>
             </div>
-            <div class="media_image_content">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="media_image">
-                    <img src="{{asset('frontend')}}/assets/images/media/Untitled design.jpg" class="img-fluid w-100">
-                  </div>
+            @foreach ($newss as $news)
+                <div class="media_image_content">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="media_image">
+                                <img src="{{asset('images/event/'.$news->image)}}" class="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="media_text">
+                                <a href="{{ route('event.details',$news->id) }}">
+                                <p>{{ $news->title }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-8">
-                  <div class="media_text">
-                    <a href="#">
-                      <p>Learning by doing: Going beyond textbooks to raise exceptional young adults.</p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="media_image_content">
+            @endforeach
+            {{-- <div class="media_image_content">
               <div class="row">
                 <div class="col-lg-4">
                   <div class="media_image">
@@ -481,7 +495,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="col-lg-3 col-md-8 col-sm-12">
@@ -490,7 +504,49 @@
               <h2>Admission Query</h2>
             </div>
             <div class="form_box  shadow p-3 mb-5">
-              <form>
+             
+    <form action="{{ route('admission_queries.store') }}" method="POST">
+    @csrf
+    <div class="mb-3">
+        <label for="parent_name" class="form-label">Parents/Guardians name<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="parent_name" name="parent_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="student_name" class="form-label">Name Of student<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="student_name" name="student_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="student_birth" class="form-label">Student date of birth<span class="text-danger">*</span></label>
+        <input type="date" class="form-control" id="student_birth" name="student_birth" required>
+    </div>
+    <div class="mb-3">
+        <label for="grade_id" class="form-label">Select grade<span class="text-danger">*</span></label>
+        <select class="form-select form-select-lg mb-3" id="grade_id" name="grade_id" required>
+            <option value="">-----Select Grade----</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="phone_number" class="form-label">Phone number</label>
+        <input type="number" class="form-control" id="phone_number" name="phone_number">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email number</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="help_query" class="form-label">How can we help?</label>
+        <textarea class="form-control" id="help_query" name="help_query" placeholder="Drop your message here" style="height: 100px"></textarea>
+    </div>
+    <div class="from_btn">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+       
+
+              {{-- <form action="{{route('admission_queries.store')}}" method="POST">
+                @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Parents/Gardians name<span
                       class="text-danger">*</span></label>
@@ -531,8 +587,13 @@
                 <div class="from_btn">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-              </form>
+              </form> --}}
             </div>
+             @if(session('success'))
+            <div class="alert alert-success">
+        {{ session('success') }}
+            </div>
+          @endif
           </div>
         </div>
       </div>

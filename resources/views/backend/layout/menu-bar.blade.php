@@ -102,10 +102,33 @@
                     </li>
                     <li class=" nav-item"><a href="{{ route('homeAgeSpecific') }}"><i class="bx bx-building"></i><span class="menu-title">Age Specific</span></a>
                     </li>
+                    <li class=" nav-item"><a href="{{ route('schoolTiming') }}"><i class="bx bx-building"></i><span class="menu-title">School Timing</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('admission_query.index') }}"><i class="bx bx-building"></i><span class="menu-title">Admission_Queries</span></a>
+                    </li>
+
+                    <li class=" navigation-header"><span>Key Info Section</span>
+                    </li>
+
+                    <li class=" nav-item"><a href="{{ route('transportCafeteriaBook') }}"><i class="bx bx-building"></i><span class="menu-title">Transport, Cafeteria, Book</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('eventNoticeNews') }}"><i class="bx bx-building"></i><span class="menu-title">Event, News, Notice, Announcement</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('camps') }}"><i class="bx bx-building"></i><span class="menu-title">Camps</span></a>
+                    </li>
                 {{-- @endcan --}}
                 {{-- @can('category.index') --}}
-                    {{-- <li class=" nav-item"><a href="{{ route('category.index') }}"><i class="bx bxs-categories"></i><span class="menu-title">Categories</span></a>
-                    </li> --}}
+                <li class=" navigation-header"><span>Others Section</span>
+                </li>
+                    <li class=" nav-item"><a href="{{ route('setting') }}"><i class="bx bxs-categories"></i><span class="menu-title">Basic Settings</span></a>
+                    <li class=" nav-item"><a href="{{ route('branch') }}"><i class="bx bxs-categories"></i><span class="menu-title">Branches</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('achievement') }}"><i class="bx bxs-categories"></i><span class="menu-title">Achievement</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('facility') }}"><i class="bx bxs-categories"></i><span class="menu-title">Facilities</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('policy') }}"><i class="bx bxs-categories"></i><span class="menu-title">Polices</span></a>
+                    </li>
                 {{-- @endcan --}}
                 {{-- @can('product.index') --}}
                     {{-- <li class=" nav-item"><a href="{{ route('product.index') }}"><i class="bx bx-package"></i><span class="menu-title">Product</span></a>

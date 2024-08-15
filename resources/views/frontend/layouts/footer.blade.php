@@ -5,13 +5,13 @@
         <div class="col-lg-2 col-md-12 col-sm-12">
           <div class="footer_1st_column">
             <div class="footer_logo">
-              <img src="{{asset('frontend')}}/assets/images/logo/Light.png" class="img-fluid w-100">
+              <img src="{{asset('images/setting/'.$company->logo)}}" class="img-fluid w-100">
             </div>
             <div class="footer_icon">
-              <a href="www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
-              <a href="www.linkdin.com"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="www.youtube.com"><i class="fa-brands fa-youtube"></i></a>
+              <a href="{{ $company->facebook }}"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="{{ $company->instagram }}"><i class="fa-brands fa-instagram"></i></a>
+              <a href="{{ $company->linkedin }}"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="{{ $company->youtube }}"><i class="fa-brands fa-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -21,19 +21,19 @@
               <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="footer_singel_part">
                   <div class="footer_singel_part_title">
-                    <h5>About Glenrich</h5>
+                    <h5>About {{ $company->name }}</h5>
                   </div>
                   <div class="footer_singel_link">
                     <ul>
                       <li>
-                        <a>Mission</a>
+                        <a class="text-white" href="{{ route('about.vision') }}">Mission ,Vision, Values</a>
                       </li>
-                      <li>
+                      {{-- <li>
                         <a>Vision & Philosophy</a>
                       </li>
                       <li>
                         <a>Glenrich values</a>
-                      </li>
+                      </li> --}}
                     </ul>
                   </div>
                   <div class="footer_singel_part_title">
@@ -48,31 +48,34 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="footer_singel_part">
-                  <div class="footer_singel_part_title">
-                    <h5>Satarkul Branch</h5>
-                  </div>
-                  <div class="footer_singel_link">
-                    <ul>
-                      <li>
-                        <p text-white>Plot No: E-2 & E-3
-                          Sunvalley Sharoni, Block: A
-                          Sunvalley Abashan Swadesh Properties Ltd Satarkul, Badda Dhaka-1212</p>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="footer_singel_part_title">
-                    <h5>Contact Number</h5>
-                    <p>+8809677444777</p>
-                  </div>
-                  <div class="footer_singel_part_title">
-                    <h5>Email Address</h5>
-                    <p>info@glenrich.edu.bd</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-12">
+              @if(App\Models\Branch::where('status','Active')->get()->all())
+                @foreach (App\Models\Branch::where('status','Active')->get()->all() as $branch)
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="footer_singel_part">
+                        <div class="footer_singel_part_title">
+                            <h5>{{ $branch->name }}</h5>
+                        </div>
+                        <div class="footer_singel_link">
+                            <ul>
+                            <li>
+                                <p text-white>{{ $branch->address }}</p>
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="footer_singel_part_title">
+                            <h5>Contact Number</h5>
+                            <p><a class="text-white" href="tel:{{ $branch->tnt }}">{{ $branch->tnt }}</a></p>
+                        </div>
+                        <div class="footer_singel_part_title">
+                            <h5>Email Address</h5>
+                            <p><a class="text-white" href="mailto:{{ $branch->email }}">{{ $branch->email }}</a></p>
+                        </div>
+                        </div>
+                    </div>
+                @endforeach
+              @endif
+
+              {{-- <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="footer_singel_part">
                   <div class="footer_singel_part_title">
                     <h5>Uttara Branch (Junior Campus)</h5>
@@ -119,7 +122,7 @@
                     <p>info@uttara.glenrich.edu.bd</p>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -128,12 +131,12 @@
             <div class="row">
               <div class="col-lg-8 col-md-6 col-sm-12">
                 <div class="copywrite_text">
-                  <P>Copyright © 2024 lighthouse international School</P>
+                  <P>Copyright © {{ date('Y') }} {{ $company->name }}</P>
                 </div>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="footer_condiion">
-                  <span><a>Terms & condition</a><a>privacy policy</a></span>
+                  {{-- <span><a>Terms & condition</a><a>privacy policy</a></span> --}}
                   <a></a>
                   </ul>
                 </div>

@@ -8,14 +8,25 @@ use App\Models\Herosection;
 use App\Models\Counter;
 use App\Models\HomeAboutUs;
 use App\Models\HomeAgeSpecific;
+use App\Models\Achievement;
+use App\Models\Facility;
+use App\Models\Camp;
+use App\Models\Policy;
+use App\Models\Branch;
+use App\Models\TransportCafeteriaBook;
+use App\Models\EventNoticeNews;
+use App\Models\SchoolTiming;
 class FrontendController extends Controller
 {
     public function index(){
         $herosection = Herosection::get()->first();
         $counter = Counter::get()->first();
         $aboutus = HomeAboutUs::get()->first();
+        $timing = SchoolTiming::get()->first();
         $agespecifics = HomeAgeSpecific::get()->all();
-        return view('frontend.index',compact('herosection','counter','aboutus','agespecifics'));
+        $latest_updates = EventNoticeNews::where('status','Active')->where('type','Announcement')->get()->all();
+        $newss = EventNoticeNews::where('status','Active')->where('type','News')->get()->all();
+        return view('frontend.index',compact('timing','herosection','counter','aboutus','agespecifics','latest_updates','newss'));
     }
 
     public function vision(){
@@ -43,8 +54,16 @@ class FrontendController extends Controller
         return view('frontend.campus');
     }
     public function event(){
-        return view('frontend.event');
+        $events = EventNoticeNews::where('status','Active')->where('type','Event')->get()->all();
+        return view('frontend.event',compact('events'));
     }
+
+    public function eventDetails(string $id)
+    {
+        $event = EventNoticeNews::findorFail($id);
+        return view('frontend.details',compact('event'));
+    }
+
     public function gallery(){
         return view('frontend.gallery');
     }
@@ -70,22 +89,27 @@ class FrontendController extends Controller
     }
 
     public function contuct(){
-        return view('frontend.contuct');
+        $branches = Branch::where('status','Active')->get()->all();
+        return view('frontend.contuct',compact('branches'));
     }
 
     public function notice(){
-        return view('frontend.notice');
+        $events = EventNoticeNews::where('status','Active')->where('type','Notice')->get()->all();
+        return view('frontend.notice', compact('events'));
     }
 
     public function book(){
-        return view('frontend.book');
+        $book = TransportCafeteriaBook::findorFail(3);
+        return view('frontend.book',compact('book'));
     }
 
     public function cafeteria(){
-        return view('frontend.cafeteria');
+        $cafeteria = TransportCafeteriaBook::findorFail(2);
+        return view('frontend.cafeteria',compact('cafeteria'));
     }
     public function transport(){
-        return view('frontend.transport');
+        $transport = TransportCafeteriaBook::findorFail(1);
+        return view('frontend.transport',compact('transport'));
     }
 
     public function ielts(){
@@ -93,22 +117,27 @@ class FrontendController extends Controller
     }
 
     public function summer_camp(){
-        return view('frontend.summer_camp');
+        $summer = Camp::get()->first();
+        return view('frontend.summer_camp',compact('summer'));
     }
 
     public function winter_camp(){
-        return view('frontend.winter_camp');
+        $winter = Camp::get()->last();
+        return view('frontend.winter_camp',compact('winter'));
     }
 
     public function achivement(){
-        return view('frontend.achivement');
+        $achievements = Achievement::where('status','Active')->get()->all();
+        return view('frontend.achivement',compact('achievements'));
     }
     public function polices(){
-        return view('frontend.policy');
+        $policy = Policy::get()->first();
+        return view('frontend.policy',compact('policy'));
     }
 
     public function facilities(){
-        return view('frontend.facility');
+        $facility = Facility::get()->first();
+        return view('frontend.facility',compact('facility'));
     }
 
     public function tour_request(){

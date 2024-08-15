@@ -2,9 +2,9 @@
 @section('content')
 <!-- Fees Banner section start  -->
 <section class="lighthouse_cmn_banner"
-        style="background-image: url({{asset('frontend')}}/assets/images/transport/transport_banner.jpg);">
+        style="background-image: url({{asset('images/transportbook/'.$transport->image)}}">
         <div class="lighthouse_cmn_overlay">
-            <h2>Transport</h2>
+            <h2>{{ $transport->title }}</h2>
         </div>
     </section>
     <!-- Fees Banner section End -->
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="lighthouse_cmn_right">
-                        <ul>
+                        {{-- <ul>
                             <li>
                                 <p>Pick-up & Drop-off Service in Uttara, Airport, Khilkhet, Baridhara, Baridhara DOHS,
                                     Bashundhara, Gulshan,
@@ -49,7 +49,8 @@
                             <li>
                                 <p>Well Trained Drivers</p>
                             </li>
-                        </ul>
+                        </ul> --}}
+                        {!! $transport->content !!}
                         <h2>Transport Application Form for Students</h2>
                     </div>
                 </div>

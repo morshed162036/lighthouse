@@ -18,11 +18,6 @@
     @yield('css')
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <style>
-        .ck-editor__editable_inline{
-            height: 100px;
-        }
-    </style>
-    <style>
         .main-menu .navbar-header .navbar-brand .brand-logo .logo{height: 60px !important;}
     </style>
 </head>

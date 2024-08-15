@@ -11,14 +11,14 @@
                 <div class="mixitup_btn">
                     <div class="text-center mb-4">
                         <button class="btn  filter" data-filter="all"> All</button>
-                        <button class="btn  filter" data-filter=".category-a">Campus</button>
+                        <button class="btn  filter" data-filter=".category-z">Campus</button>
                         <button class="btn  filter" data-filter=".category-b">Classroom</button>
                         <button class="btn  filter" data-filter=".category-c">Facilities</button>
                     </div>
                 </div>
                 <div class="mixitup_body">
                     <div class="row" id="mix-wrapper">
-                        <div class="col-lg-3 mix category-a">
+                        <div class="col-lg-3 mix category-z">
                             <div class="mixitup_single_image">
                                 <img src="{{asset('frontend')}}/assets/images/campus/campus_1.jpg" class="img-fluid w-100">
                                 <div class="mixitup_text">
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mix category-c">
+                        <div class="col-lg-3 mix category-z">
                             <div class="mixitup_single_image">
                                 <img src="{{asset('frontend')}}/assets/images/campus/campus_11.jpg" class="img-fluid w-100">
                                 <div class="mixitup_text">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mix category-a">
+                        <div class="col-lg-3 mix category-z">
                             <div class="mixitup_single_image">
                                 <img src="{{asset('frontend')}}/assets/images/campus/campus_5.jpg" class="img-fluid w-100">
                                 <div class="mixitup_text">
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mix category-a">
+                        <div class="col-lg-3 mix category-z">
                             <div class="mixitup_single_image">
                                 <img src="{{asset('frontend')}}/assets/images/campus/campus_8.jpg" class="img-fluid w-100">
                                 <div class="mixitup_text">
