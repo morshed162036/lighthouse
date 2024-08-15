@@ -63,7 +63,7 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                     @if (!empty($company->logo))
-                        <div class="brand-logo"><img class="logo" src="{{asset('images/company/'.$company->logo)}}" /></div>
+                        <div class="brand-logo"><img class="logo" src="{{asset('images/setting/'.$company->logo)}}" /></div>
                     @else
                         <h2 class="brand-text mb-0">Light House</h2>
                     @endif
@@ -104,8 +104,6 @@
                     </li>
                     <li class=" nav-item"><a href="{{ route('schoolTiming') }}"><i class="bx bx-building"></i><span class="menu-title">School Timing</span></a>
                     </li>
-                    <li class=" nav-item"><a href="{{ route('admission_query.index') }}"><i class="bx bx-building"></i><span class="menu-title">Admission_Queries</span></a>
-                    </li>
 
                     <li class=" navigation-header"><span>Key Info Section</span>
                     </li>
@@ -118,10 +116,28 @@
                     </li>
                 {{-- @endcan --}}
                 {{-- @can('category.index') --}}
+                <li class=" navigation-header"><span>About US Section</span>
+                </li>
+                <li class=" nav-item"><a href="{{ route('adminGallery') }}"><i class="bx bxs-categories"></i><span class="menu-title">Gallery</span></a></li>
+                <li class=" nav-item"><a href="{{ route('campusGallery') }}"><i class="bx bxs-categories"></i><span class="menu-title">Campus Gallery</span></a></li>
+                <li class=" nav-item"><a href="{{ route('choose') }}"><i class="bx bxs-categories"></i><span class="menu-title">Why Choose Us</span></a></li>
+
+
+                <li class=" navigation-header"><span>Admission Section</span>
+                </li>
+                <li class=" nav-item"><a href="{{ route('addmissionProcedure') }}"><i class="bx bxs-categories"></i><span class="menu-title">Admission Procedure</span></a></li>
+                <li class=" nav-item"><a href="{{ route('schoolFee') }}"><i class="bx bxs-categories"></i><span class="menu-title">School Fee</span></a></li>
+                <li class=" nav-item"><a href="{{ route('onlinePayment') }}"><i class="bx bxs-categories"></i><span class="menu-title">Online Payment</span></a></li>
+
+
                 <li class=" navigation-header"><span>Others Section</span>
                 </li>
-                    <li class=" nav-item"><a href="{{ route('setting') }}"><i class="bx bxs-categories"></i><span class="menu-title">Basic Settings</span></a>
+                    <li class=" nav-item"><a href="{{ route('setting') }}"><i class="bx bxs-categories"></i><span class="menu-title">Basic Settings</span></a></li>
                     <li class=" nav-item"><a href="{{ route('branch') }}"><i class="bx bxs-categories"></i><span class="menu-title">Branches</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('tab') }}"><i class="bx bxs-categories"></i><span class="menu-title">Tabs</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="{{ route('grade') }}"><i class="bx bxs-categories"></i><span class="menu-title">Grades</span></a>
                     </li>
                     <li class=" nav-item"><a href="{{ route('achievement') }}"><i class="bx bxs-categories"></i><span class="menu-title">Achievement</span></a>
                     </li>
