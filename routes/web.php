@@ -55,7 +55,9 @@ Route::get('/facilities', [FrontendController::class, 'facilities'])->name('faci
 Route::get('/tour-request', [FrontendController::class, 'tour_request'])->name('tour_request');
 Route::get('/login', [FrontendController::class, 'login'])->name('login');
 Route::post('/admission_queries', [FormController::class, 'store'])->name('admission_queries.store');
-Route::get('/admission-queries', [FormController::class, 'index'])->name('admission_query.index');
+Route::get('/admission-queries', [FormController::class, 'index'])->name('admission_query');
+Route::post('/tour', [FormController::class, 'tour_store'])->name('tour.store');
+Route::get('/tour', [FormController::class, 'tour'])->name('tour');
 
 Route::prefix('/admin')->group(function () {
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
@@ -79,5 +81,6 @@ Route::prefix('/admin')->group(function () {
         Route::post('event-upload', [KeyInformationController::class, 'eventUpload'])->name('event.upload');
         Route::match(['get', 'post'], 'transport-cafeteria-book/{id?}', [KeyInformationController::class, 'transportCafeteriaBook'])->name('transportCafeteriaBook');
         Route::match(['get', 'post'], 'setting', [HeroSectionController::class, 'setting'])->name('setting');
+        Route::match(['get', 'post'], 'slot/{id?}', [FormController::class, 'slot'])->name('slot');
     });
 });
