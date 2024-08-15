@@ -104,6 +104,8 @@
                     </li>
                     <li class=" nav-item"><a href="{{ route('schoolTiming') }}"><i class="bx bx-building"></i><span class="menu-title">School Timing</span></a>
                     </li>
+                    <li class=" nav-item"><a href="{{ route('admission_query.index') }}"><i class="bx bx-building"></i><span class="menu-title">Admission_Queries</span></a>
+                    </li>
 
                     <li class=" navigation-header"><span>Key Info Section</span>
                     </li>

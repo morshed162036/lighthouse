@@ -101,7 +101,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{route('polices')}}">Polices</a>
+                        <a class="nav-link" aria-current="page" href="{{route('polices')}}">policies</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{route('facilities')}}">Facilities</a>
