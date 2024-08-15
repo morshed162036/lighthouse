@@ -2,17 +2,18 @@
 @section('content')
 <!-- Fees Banner section start  -->
 <section class="fees_banner"
-    style="background-image: url({{asset('frontend')}}/assets/images/policy/policy_banner.jpg);"></section>
+    style="background-image: url({{asset('images/policy/'.$policy->image)}}"></section>
 <!-- Fees Banner section End -->
 
 <!-- fees content start -->
 <section class="fees_content">
     <div class="container">
         <div class="principale_massage_title">
-            <h2>policy</h2>
+            <h2>{{ $policy->title }}</h2>
         </div>
         <div class="row">
-            <div class="curriculam_bottom_pera">
+            {!! $policy->content !!}
+            {{-- <div class="curriculam_bottom_pera">
                 <p>A new and exciting opportunity, titled “Glenstar Scholarship,” has been opened for Grades 3-8
                     students starting from 2024-25.
                 </p>
@@ -59,10 +60,10 @@
 
                         Best of luck to your children! We hope they can become lighthouse!</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
 </section>
-<section class="policy_cmn_image">
+{{-- <section class="policy_cmn_image">
     <img src="{{asset('frontend')}}/assets/images/policy/scholarship.jpg" class="img-fluid w-100">
 </section>
 
@@ -180,5 +181,5 @@
 <!-- fess content end -->
 <section class="policy_cmn_image">
     <img src="{{asset('frontend')}}/assets/images/policy/meritbased.jpg" class="img-fluid w-100">
-</section>
+</section> --}}
 @endsection
