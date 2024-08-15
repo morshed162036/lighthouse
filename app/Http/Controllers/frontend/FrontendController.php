@@ -16,6 +16,14 @@ use App\Models\Branch;
 use App\Models\TransportCafeteriaBook;
 use App\Models\EventNoticeNews;
 use App\Models\SchoolTiming;
+use App\Models\AddmissionProcedure;
+use App\Models\Grade;
+use App\Models\SchoolFee;
+use App\Models\OnlinePayment;
+use App\Models\Tab;
+use App\Models\Gallery;
+use App\Models\WhyChooseUs;
+use App\Models\Campus;
 class FrontendController extends Controller
 {
     public function index(){
@@ -37,7 +45,9 @@ class FrontendController extends Controller
         return view('frontend.principal_massage');
     }
     public function choose(){
-        return view('frontend.choose_us');
+        $tabs = Tab::where('type','WhyChooseUs')->where('status','Active')->get()->all();
+        $galleries = WhyChooseUs::where('status','Active')->get()->all();
+        return view('frontend.choose_us',compact('tabs','galleries'));
     }
 
     public function team(){
@@ -51,7 +61,9 @@ class FrontendController extends Controller
         return view('frontend.calender');
     }
     public function campus(){
-        return view('frontend.campus');
+        $tabs = Tab::where('type','Campus')->where('status','Active')->get()->all();
+        $galleries = Campus::where('status','Active')->get()->all();
+        return view('frontend.campus',compact('tabs','galleries'));
     }
     public function event(){
         $events = EventNoticeNews::where('status','Active')->where('type','Event')->get()->all();
@@ -65,15 +77,20 @@ class FrontendController extends Controller
     }
 
     public function gallery(){
-        return view('frontend.gallery');
+        $tabs = Tab::where('type','Gallery')->where('status','Active')->get()->all();
+        $galleries = Gallery::where('status','Active')->get()->all();
+        return view('frontend.gallery',compact('tabs','galleries'));
     }
 
     public function addmission_procedure(){
-        return view('frontend.admission_procedure');
+        $addmission = AddmissionProcedure::get()->first();
+        $grades = Grade::where('status','Active')->get()->all();
+        return view('frontend.admission_procedure',compact('addmission','grades'));
     }
 
     public function fees(){
-        return view('frontend.fees');
+        $fee = SchoolFee::get()->first();
+        return view('frontend.fees',compact('fee'));
     }
 
     public function how_to_apply(){
@@ -85,7 +102,8 @@ class FrontendController extends Controller
     }
 
     public function online_payment(){
-        return view('frontend.online_payment');
+        $payment = OnlinePayment::get()->first();
+        return view('frontend.online_payment',compact('payment'));
     }
 
     public function contuct(){
