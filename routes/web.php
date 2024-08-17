@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\AcademicCalenderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\backend\AdminController;
@@ -82,5 +83,13 @@ Route::prefix('/admin')->group(function () {
         Route::match(['get', 'post'], 'transport-cafeteria-book/{id?}', [KeyInformationController::class, 'transportCafeteriaBook'])->name('transportCafeteriaBook');
         Route::match(['get', 'post'], 'setting', [HeroSectionController::class, 'setting'])->name('setting');
         Route::match(['get', 'post'], 'slot/{id?}', [FormController::class, 'slot'])->name('slot');
+        Route::get('/academic-calenders', [AcademicCalenderController::class, 'index'])->name('academic_calenders');
+        Route::get('/academic-calenders/create', [AcademicCalenderController::class, 'create'])->name('academic_calender.create');
+        Route::post('/academic-calenders', [AcademicCalenderController::class, 'store'])->name('academic_calender.store');
+        Route::get('/academic-calenders/edit{id}', [AcademicCalenderController::class, 'edit'])->name('academic_calender.edit');
+        Route::put('/academic-calenders/update{id}', [AcademicCalenderController::class, 'update'])->name('academic_calender.update');
+        Route::delete('/academic-calenders/{id}', [AcademicCalenderController::class, 'destroy'])->name('academic_calender.destroy');
+
+        // Route::delete('/academic-calenders/delete{id}', [AcademicCalenderController::class, 'delete'])->name('academic_calender.destroy');
     });
 });

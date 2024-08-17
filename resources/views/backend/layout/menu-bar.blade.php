@@ -110,6 +110,8 @@
                     </li>
                      <li class=" nav-item"><a href="{{ route('slot') }}"><i class="bx bxs-categories"></i><span class="menu-title">Slots</span></a>
                     </li>
+                     <li class=" nav-item"><a href="{{ route('academic_calenders') }}"><i class="bx bxs-categories"></i><span class="menu-title">Academic Calender</span></a>
+                    </li>
                     <li class=" navigation-header"><span>Key Info Section</span>
                     </li>
 

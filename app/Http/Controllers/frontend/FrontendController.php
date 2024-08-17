@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AcademicCalender;
 use Illuminate\Http\Request;
 use App\Models\Herosection;
 use App\Models\Counter;
@@ -57,7 +58,9 @@ class FrontendController extends Controller
     }
     public function calender()
     {
-        return view('frontend.calender');
+        $academic_calenders = AcademicCalender::get()->all();
+        $branches = Branch::where('status','Active')->get()->all();
+        return view('frontend.calender', compact('academic_calenders','branches'));
     }
     public function campus()
     {
